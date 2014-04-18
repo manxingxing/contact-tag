@@ -2,7 +2,7 @@ ul.contacts{padding: 0px; overflow: auto; margin-top:0px;margin-bottom:5px;margi
 ul.contacts li{display: block; float: left; margin: 2px 2px; list-style-type: none; height:24px;}
 ul.contacts li.contact {-moz-border-radius: 3px; border-radius: 3px; -webkit-border-radius: 3px; border: 1px solid #d9d9d9; background: none; background-color: #f5f5f5; font-weight: normal; padding:1px 3px; }
 ul.contacts li.contact.invalid {border:solid 1px white;background:none;background-color:none;}
-ul.contacts li.new-contact input{background-color: #fff;  border-style: none; border-width: 0px; width: 90px;padding:4px 0px;margin-left:0px; outline:none;}
+ul.contacts li.new-contact textarea{background-color: #fff;  border-style: none; border-width: 0px; width: 100px;padding:4px 0px;margin-left:0px; outline:none;overflow:hidden;resize:none;}
 ul.contacts li.contact span {font-size:13px; line-height: 24px; zoom:1;}
 ul.contacts li.contact.invalid span.contact-label {border-bottom:2px dotted #d14836;}
 ul.contacts li.contact span.close {text-decoration: none; padding-left:5px; color:#222;font-size:15px; line-height: 24px;cursor:pointer;font-weight:bold;}

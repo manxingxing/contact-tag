@@ -11,7 +11,7 @@
         self.element.hide().attr('disabled', true).addClass('contact-tag-hidden-field');
         // 在Rails里，name形如'tags[]'的表单元素会合并成一个数组
         self.inputName = (this.element.attr('name') || 'tags') + '[]';
-        self.tagInput = $('<input type="text" spellcheck="false" autocomplete="false">');
+        self.tagInput = $('<textarea spellcheck="false" autocomplete="false" wrap="off" class="inputer" rows="1"/>');
         self.newContactContainer = $('<li/>').addClass('new-contact').append(self.tagInput);
         self.contactsContainer = $("<ul/>").addClass('contacts').append(self.newContactContainer).insertAfter(self.element);
 
