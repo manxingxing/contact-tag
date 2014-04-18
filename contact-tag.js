@@ -33,9 +33,10 @@
               // except when there is an open quote or if setting allowSpaces = true.
               if ((event.which === $.ui.keyCode.COMMA && event.shiftKey === false) ||
                   event.which === $.ui.keyCode.ENTER ||
+                  (event.which == $.ui.keyCode.TAB && self.tagInput.val() !== '') ||
                   event.which == $.ui.keyCode.SPACE ) {
-                // Enter submits the form if there's no text in the input.
-                if (event.which === $.ui.keyCode.ENTER) { event.preventDefault(); }
+
+                event.preventDefault();
 
                 // 当有候选时，选择当前选中项，没有候选时，则将其变成tag
                 if (self.tagInput.data('autocomplete-open')) {
@@ -44,7 +45,6 @@
                   self.addContact(val);
                 }
                 self.tagInput.val('');
-                return false;
               }
             })
             .on('input propertychange', function(){
@@ -71,19 +71,21 @@
               }
             })
             .on('blur', function(){
-              var text = $.trim(self.tagInput.val());
-              if (text === ''){return;}
-              if (self.options.autocomplete.source) {
-                var searchResult = self._searchInSource(text);
-                if (searchResult) {
-                  self.addContact(searchResult.value, searchResult.label);
+              if (!self.tagInput.data('autocomplete-open')) {
+                var text = $.trim(self.tagInput.val());
+                if (text === ''){return;}
+                if (self.options.autocomplete.source) {
+                  var searchResult = self._searchInSource(text);
+                  if (searchResult) {
+                    self.addContact(searchResult.value, searchResult.label);
+                  } else {
+                    self.addContact(text);
+                  }
                 } else {
                   self.addContact(text);
                 }
-              } else {
-                self.addContact(text);
+                self.tagInput.val('');
               }
-              self.tagInput.val('');
             });
 
         self.contactsContainer
