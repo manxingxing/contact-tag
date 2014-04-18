@@ -92,10 +92,10 @@
               var isValid = $(this).parent().hasClass('valid');
               $(this).parent().remove();
               if (isValid && self.options.afterContactRemoved) {
-                var num = $(this).parent(".contact.valid").find('input:hidden').val();
-                var name = $(this).parent(".contact.valid").find('span.contact-label').text();
-                if (num){
-                  self.options.afterContactRemoved.call(self, num, name);
+                var value = $(this).parent(".contact.valid").find('input:hidden').val();
+                var label = $(this).parent(".contact.valid").find('span.contact-label').text();
+                if (value){
+                  self.options.afterContactRemoved.call(self, value, label);
                 }
               }
             });
@@ -151,21 +151,40 @@
         var elementToBeRemoved = this._lastContact();
         elementToBeRemoved.remove();
         if (elementToBeRemoved.hasClass("valid") && this.options.afterContactRemoved){
-          var name = elementToBeRemoved.find('span.contact-label').text();
-          var num  = elementToBeRemoved.find('input:hidden').val();
-          this.options.afterContactRemoved.call(this, num, name);
+          var label = elementToBeRemoved.find('span.contact-label').text();
+          var value  = elementToBeRemoved.find('input:hidden').val();
+          this.options.afterContactRemoved.call(this, value, label);
         }
       },
-      removeContactByNum: function(num){
-        var elementToBeRemoved = this.contactsContainer.find('.contact.valid').has('input:hidden[value=' + num + ']');
+      removeContactByValue: function(value){
+        var elementToBeRemoved = this.contactsContainer.find('.contact.valid').has('input:hidden[value=' + value + ']');
         if (elementToBeRemoved){
           elementToBeRemoved.remove();
 
           if (this.options.afterContactRemoved){
-            var name = elementToBeRemoved.find('span.contact-label').text();
-            this.options.afterContactRemoved.call(this, num, name);
+            var label = elementToBeRemoved.find('span.contact-label').text();
+            this.options.afterContactRemoved.call(this, value, label);
           }
         }
+      },
+      contacts: function(){
+        return this.contactsContainer.find(".contact.valid").map(function(c){
+          return {
+            label: $(this).find('span.contact-label').text(),
+            value: $(this).find('input:hidden').val() 
+          }
+        })
+      },
+      setContacts: function(contacts){
+        var self = this;
+        $.each(contacts, function(i, c){
+          var label = $.trim(c.label || c);
+          var value = $.trim(c.value || c);
+
+          if (value !== '') {
+            self.addContact(value, label);
+          }
+        })
       },
       _searchInSource: function(term){
         term = term.toLowerCase();

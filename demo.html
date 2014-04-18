@@ -13,17 +13,18 @@
   <input type="text" name="contact" id="contact">
 
   <script>
+    var bla;
     $(function(){
-      $("#contact").contact_tag({
+      bla = $("#contact").contact_tag({
         validContactRegex: /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/,
         autocomplete: {
           source: [
-            {label: '曼兴兴', value: 'manxingxing@gmail.com'},
-            {label: '屈晓璐', value: 'quxiaolu@gmail.com'}
+            {label: '曼兴兴', value: 'random@gmail.com'},
+            {label: '屈晓璐', value: 'random2@gmail.com'}
           ]
         }
       });
-    })
+    });
 
   </script>
   
