@@ -1,18 +1,79 @@
-ul.contacts{padding: 0px; overflow: auto; margin-top:0px;margin-bottom:5px;margin-left: inherit; margin-right: inherit; border-style: solid; border-width: 1px; border-color: #C6C6C6; background: inherit; cursor:text; min-height:32px;}
-ul.contacts li{display: block; float: left; margin: 2px 2px; list-style-type: none; height:24px;}
-ul.contacts li.contact {-moz-border-radius: 3px; border-radius: 3px; -webkit-border-radius: 3px; border: 1px solid #d9d9d9; background: none; background-color: #f5f5f5; font-weight: normal; padding:1px 3px; }
-ul.contacts li.contact.invalid {border:solid 1px white;background:none;background-color:none;}
-ul.contacts li.new-contact textarea{background-color: #fff;  border-style: none; border-width: 0px; width: 100px;padding:4px 0px;margin-left:0px; outline:none;overflow:hidden;resize:none;}
-ul.contacts li.contact span {font-size:14px; line-height: 24px; zoom:1;vertical-align: middle;font-family: ff-tisa-web-pro-1, ff-tisa-web-pro-2, 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans GB', 'Hiragino Sans GB W3', 'WenQuanYi Micro Hei', sans-serif;}
-ul.contacts li.contact.invalid span.contact-label {border-bottom:2px dotted #d14836;}
-ul.contacts li.contact span.close {text-decoration: none; padding-left:5px; cursor:pointer; text-align: center; text-shadow: rgb(255, 255, 255) 0px 1px 0px; line-height: 24px; height: 24px; font-size: 18px; vertical-align: middle; font-family: ff-tisa-web-pro-1, ff-tisa-web-pro-2, 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans GB', 'Hiragino Sans GB W3', 'WenQuanYi Micro Hei', sans-serif; }
-.ui-helper-hidden-accessible{display:none;height:0px;width:0px;line-height: 0px;visibility: hidden;}
-/* Forked from a jQuery UI theme, so that we don't require the jQuery UI CSS as a dependency. */
-/* 从jquery-tagit那里拷贝过来的 */
+ul.contacts{
+  padding:0px 0px 0px 5px;
+  margin:0;
+  list-style-type: none;
+  border: solid 1px #C6C6C6;
+  cursor:text;
+  font: 14px "微软雅黑","Helvetica Neue",Helvetica,Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: auto;
+  vertical-align:middle;
+}
+ul.contacts li{
+  margin: 2px 5px 2px 0px;
+  display:inline-block; /* 现代浏览器 及  IE6、7 inline 元素 */
+  *display:inline; /* IE6、7 block 元素 */
+  *zoom:1;
+  vertical-align:middle;
+  overflow:hidden;
+}
+ul.contacts li.contact.valid {
+  padding:1px 3px;
+  border: 1px solid #d9d9d9;
+  border-radius: 3px; 
+  -moz-border-radius: 3px; 
+  -webkit-border-radius: 3px; 
+  background-color: #f5f5f5;
+}
+ul.contacts li.contact.invalid {
+  padding:2px 3px;
+  border:0;
+  background:none;
+}
+li.contact span.contact-label {
+  white-space: nowrap;
+}
+ul.contacts li.contact.invalid span.contact-label {
+  border-bottom:2px dotted #d14836;
+}
+ul.contacts li.contact span.close {
+  text-decoration: none; 
+  margin-left:5px; 
+  cursor:pointer; 
+  text-shadow: rgb(255, 255, 255) 0px 1px 0px; 
+}
+ul.contacts li.new-contact input{
+  width: 120px;
+  border:0;
+  outline:0;
+  padding:4px 0px;
+  margin:0;
+  font-size:14px;
+  line-height:14px;
+  background: none; 
+  resize:none;
+  overflow:hidden;
+}
+
 .ui-autocomplete { position: absolute; cursor: default; }
-* html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
-.ui-menu {list-style:none; padding: 4px 0px; margin: 0; display:block; float: left;max-height:300px;overflow-y:auto;overflow-x:hidden; }
-.ui-menu .ui-menu-item {margin:0; padding: 0; zoom: 1; float: left; clear: left; min-width:140px; width: 100%; }
+* html .ui-autocomplete {
+ width:1px;  /* without this, the menu expands to 100% in IE6 */
+ overflow:visible;
+}
+.ui-menu {
+  list-style:none; 
+  padding: 4px 0px; 
+  margin: 0; 
+  max-height:300px;
+  overflow-y:auto;
+  overflow-x:hidden;
+}
+.ui-menu .ui-menu-item {
+  margin:0; 
+  padding: 0; 
+  width:100%;
+}
 .ui-menu .ui-menu-item a {
   text-decoration:none;
   display:block;
@@ -30,4 +91,4 @@ ul.contacts li.contact span.close {text-decoration: none; padding-left:5px; curs
 .ui-state-hover,  .ui-state-focus { background: #eee; font-weight: normal; color: #212121; }
 .ui-state-active  { border: 1px solid #aaaaaa; }
 .ui-widget-content { border: 1px solid #aaaaaa; }
-.contact-tag .ui-helper-hidden-accessible { position: absolute !important; clip: rect(1px,1px,1px,1px); }
+.ui-helper-hidden-accessible{display:none;height:0px;width:0px;line-height: 0px;visibility: hidden;}
